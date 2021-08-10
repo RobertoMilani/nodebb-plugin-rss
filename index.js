@@ -138,7 +138,7 @@ async function postEntry(feed, entry) {
 	const result = await topics.post({
 		uid: posterUid,
 		title: entry.title,
-		content: (entry.description && '') + '<br/>From: ' + (entry.link && entry.link.href),
+		content: (entry.description && entry.content) + '\nFrom: ' + (entry.link && entry.link.href),
 		cid: feed.category,
 		tags: tags,
 	});
