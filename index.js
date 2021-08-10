@@ -136,10 +136,10 @@ async function postEntry(feed, entry) {
 	}
 	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title + ' - content: ' + entry.content + ' - description: ' + entry.description, 'published date: ' + getEntryDate(entry));
 	
-	var content = (entry.description && entry.content) + '\n';
+	var content = (entry.description && entry.content) + '\n\n';
 	
 	if (entry.enclosure) {
-		content += '![' + entry.title + '!](' + entry.enclosure.url + '"' + entry.title + '")\n';
+		content += '![' + entry.title + '!](' + entry.enclosure.url + ' "' + entry.title + '")\n\n';
 	}
 	
 	if (entry.link && entry.link.href) {
