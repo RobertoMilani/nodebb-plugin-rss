@@ -6,7 +6,7 @@ To customize options for the parser, please consult the "RSS" page in the admini
 
 ## Installation
 
-    npm install robertomilani/nodebb-plugin-rss-with-abstract
+    npm install robertomilani/nodebb-plugin-rss
 
 ## Usage
 
