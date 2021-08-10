@@ -8,7 +8,12 @@ feed.getItems = async function (feedUrl, entriesToPull) {
 	entriesToPull = parseInt(entriesToPull, 10) || 4;
 	feedUrl = feedUrl + '?t=' + Date.now();
 
-	const parser = new Parser();
+	const parser = new Parser({
+		customFields: {
+			item: ['description'],
+	  	}
+	});
+	
 	const feed = await parser.parseURL(feedUrl);
 
 	feed.items = feed.items.filter(Boolean).slice(0, entriesToPull);
@@ -16,6 +21,7 @@ feed.getItems = async function (feedUrl, entriesToPull) {
 		return {
 			title: item.title,
 			content: item.content,
+			description: item.description.
 			published: item.pubDate,
 			link: { href: item.link },
 			id: item.guid || item.id,
