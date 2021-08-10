@@ -11,7 +11,7 @@
     "plugin",
     "rss"
   ],
-  "author": "Baris Usakli <baris@designcreateplay.com>",
+  "author": "Roberto Milani <roberto@cartastraccia.net>",
   "license": "BSD-2-Clause",
   "dependencies": {
     "cron": "~1.0.5",
