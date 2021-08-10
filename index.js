@@ -7,10 +7,11 @@ const topics = require.main.require('./src/topics');
 const db = require.main.require('./src/database');
 const user = require.main.require('./src/user');
 
-
 const widget = require('./widget');
 const feedAPI = require('./feed');
 const jobs = require('./jobs');
+
+const TurndownService = require('turndown');
 
 const rssPlugin = module.exports;
 const admin = {};
@@ -136,7 +137,9 @@ async function postEntry(feed, entry) {
 	}
 	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title + ' - content: ' + entry.content + ' - description: ' + entry.description, 'published date: ' + getEntryDate(entry));
 	
-	var content = (entry.description && entry.content) + '\n\n';
+	const turndownService = new TurnDownService();
+	
+	var content = turndownService.turndown((entry.description && entry.content)) + '\n\n';
 	
 	if (entry.enclosure) {
 		content += '![' + entry.title + '!](' + entry.enclosure.url + ' "' + entry.title + '")\n\n';
