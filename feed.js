@@ -22,6 +22,7 @@ feed.getItems = async function (feedUrl, entriesToPull) {
 			title: item.title,
 			content: item.content,
 			description: item.description,
+			enclosure: item.enclosure,
 			published: item.pubDate,
 			link: { href: item.link },
 			id: item.guid || item.id,
