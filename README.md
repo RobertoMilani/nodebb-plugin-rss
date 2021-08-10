@@ -1,4 +1,4 @@
-# NodeBB RSS Parser
+# NodeBB RSS Parser with abstract
 
 This NodeBB plugin pulls RSS feeds and creates topics in predefined categories.
 
@@ -6,7 +6,7 @@ To customize options for the parser, please consult the "RSS" page in the admini
 
 ## Installation
 
-    npm install nodebb-plugin-rss
+    npm install robertomilani/nodebb-plugin-rss-with-abstract
 
 ## Usage
 
