@@ -134,7 +134,7 @@ async function postEntry(feed, entry) {
 		const entryTags = entry.category.map(data => data && data.term).filter(Boolean);
 		tags = tags.concat(entryTags);
 	}
-	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title + ', published date: ' + getEntryDate(entry));
+	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title + ' + ' - content: ' + entry.content + ' - description: ' + entry.description, published date: ' + getEntryDate(entry));
 	const result = await topics.post({
 		uid: posterUid,
 		title: entry.title,
