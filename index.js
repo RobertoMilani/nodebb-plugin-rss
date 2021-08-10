@@ -143,7 +143,7 @@ async function postEntry(feed, entry) {
 	}
 	
 	if (entry.link && entry.link.href) {
-		content += '[Read more](' + (entry.link && entry.link.href) + )';
+		content += '[Read more](' + (entry.link && entry.link.href) + ')';
 	}
 	
 	const result = await topics.post({
