@@ -137,7 +137,7 @@ async function postEntry(feed, entry) {
 	}
 	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title + ' - content: ' + entry.content + ' - description: ' + entry.description, 'published date: ' + getEntryDate(entry));
 	
-	const turndownService = new TurnDownService();
+	const turndownService = new TurndownService();
 	
 	var content = turndownService.turndown((entry.description && entry.content)) + '\n\n';
 	
