@@ -135,11 +135,11 @@ async function postEntry(feed, entry) {
 		const entryTags = entry.category.map(data => data && data.term).filter(Boolean);
 		tags = tags.concat(entryTags);
 	}
-	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title + ' - content: ' + entry.content + ' - description: ' + entry.description, 'published date: ' + getEntryDate(entry));
+	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title + ' - content: ' + entry.content, 'published date: ' + getEntryDate(entry));
 	
 	const turndownService = new TurndownService();
 	
-	var content = turndownService.turndown((entry.description && entry.content)) + '\n\n';
+	var content = turndownService.turndown(entry.content) + '\n\n';
 	
 	if (entry.enclosure) {
 		content += '![' + entry.title + '!](' + entry.enclosure.url + ' "' + entry.title + '")\n\n';
