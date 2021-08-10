@@ -15,7 +15,7 @@ feed.getItems = async function (feedUrl, entriesToPull) {
 	feed.items = feed.items.map(function (item) {
 		return {
 			title: item.title,
-			content: { content: item.content },
+			content: item.content,
 			published: item.pubDate,
 			link: { href: item.link },
 			id: item.guid || item.id,
