@@ -10,18 +10,20 @@ feed.getItems = async function (feedUrl, entriesToPull) {
 
 	const parser = new Parser({
 		customFields: {
-			item: ['description'],
+			item: ['description', ['content:encoded', 'content_encoded']],			
 	  	}
 	});
 	
 	const feed = await parser.parseURL(feedUrl);
 
 	feed.items = feed.items.filter(Boolean).slice(0, entriesToPull);
-	feed.items = feed.items.map(function (item) {
+	feed.items = feed.items.map(function (item) {			
+		
 		return {
 			title: item.title,
 			content: item.content,
-			description: (item.description && item.content),
+			content_encoded: item.content_encoded,
+			description: item.description,
 			enclosure: item.enclosure,
 			published: item.pubDate,
 			link: { href: item.link },
