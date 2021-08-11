@@ -135,11 +135,20 @@ async function postEntry(feed, entry) {
 		const entryTags = entry.category.map(data => data && data.term).filter(Boolean);
 		tags = tags.concat(entryTags);
 	}
-	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title + ' - content: ' + entry.content, 'published date: ' + getEntryDate(entry));
+	winston.info('[plugin-rss] posting, ' + feed.url + ' - title: ' + entry.title, 'published date: ' + getEntryDate(entry));
 	
 	const turndownService = new TurndownService();
 	
-	var content = turndownService.turndown(entry.content) + '\n\n';
+	var content = '';
+	
+	if (entry.content_encoded) {
+		content = turndownService.turndown(entry.content_encoded) + '\n\n';
+	} 
+	else {
+		content = turndownService.turndown(entry.content) + '\n\n';	
+	}
+	
+	turndownService.turndown(entry.content) + '\n\n';
 	
 	if (entry.enclosure) {
 		content += '![' + entry.title + '!](' + entry.enclosure.url + ' "' + entry.title + '")\n\n';
